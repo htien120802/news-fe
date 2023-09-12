@@ -1,0 +1,35 @@
+<div class="grid justify-items-center grid-cols-3 gap-y-3 my-10"
+      infiniteScroll
+      [infiniteScrollDistance]="0"
+      [infiniteScrollThrottle]="50"
+      (scrolled)="onScroll()"
+      >
+    <div
+      *ngFor="let news of newses"
+      class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+      (click)="getNewsDetail(news.id)"
+    >
+      <a >
+        <!-- <img class="rounded-t-lg w-full" src="" alt="" /> -->
+        <div [innerHTML]="news.imgSrc"></div>
+      </a>
+      <div class="p-5">
+        <a >
+          <h5
+            class="mb-2 text-base font-bold tracking-tight text-gray-900 dark:text-white "
+          >
+            {{ news.title }}
+          </h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 text-xs ">
+          {{ news.subContent }}
+        </p>
+        <a
+          class="bottom-0 inline-flex items-center px-2 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          {{news.category?.name}}
+        </a>
+      </div>
+    </div>
+    
+  </div>
